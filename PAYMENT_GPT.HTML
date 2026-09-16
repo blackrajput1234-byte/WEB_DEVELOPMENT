@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Payment Page</title>
+</head>
+
+<body>
+
+    <h1 align="center">💳 Payment Page</h1>
+    <hr>
+
+    <h2>Order Summary</h2>
+
+    <table border="1" cellpadding="10" cellspacing="0" width="50%">
+        <tr>
+            <th>Book</th>
+            <th>Price</th>
+        </tr>
+
+        <tr>
+            <td>The Great Gatsby</td>
+            <td>₹299</td>
+        </tr>
+
+        <tr>
+            <td>1984</td>
+            <td>₹399</td>
+        </tr>
+
+        <tr>
+            <th>Total</th>
+            <th>₹698</th>
+        </tr>
+    </table>
+
+    <br>
+
+    <h2>Customer Details</h2>
+
+    <form>
+
+        <label>Full Name:</label><br>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required>
+        <br><br>
+
+        <label>Phone Number:</label><br>
+        <input type="tel" name="phone" required>
+        <br><br>
+
+        <label>Address:</label><br>
+        <textarea name="address" rows="4" cols="40"></textarea>
+        <br><br>
+
+        <h2>Payment Method</h2>
+
+        <input type="radio" name="payment" value="upi">
+        <label>UPI</label>
+        <br>
+
+        <input type="radio" name="payment" value="card">
+        <label>Credit/Debit Card</label>
+        <br>
+
+        <input type="radio" name="payment" value="cod">
+        <label>Cash on Delivery</label>
+
+        <br><br>
+
+        <h3>Card Details</h3>
+
+        <label>Card Holder Name:</label><br>
+        <input type="text" name="cardname">
+        <br><br>
+
+        <label>Card Number:</label><br>
+        <input type="text" name="cardnumber" maxlength="16" placeholder="Enter card number">
+        <br><br>
+
+        <label>Expiry Date:</label><br>
+        <input type="month" name="expiry">
+        <br><br>
+
+        <label>CVV:</label><br>
+        <input type="password" name="cvv" maxlength="4">
+        <br><br>
+
+        <input type="checkbox" required>
+        <label>I agree to the terms and conditions.</label>
+
+        <br><br>
+
+        <input type="submit" value="💳 Pay ₹698">
+
+        <input type="reset" value="Clear">
+
+    </form>
+
+    <hr>
+
+    <p align="center">
+        🔒 Secure Payment | © 2026 Books Catalog
+    </p>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART PAGE </title>
+</head>
+<body>
+    <h1> YOUR CART CONFIRMATION</h1>
+    <table border="1" id="cartTable">
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="cartItems">
+        </tbody>
+    </table>
+    
+    <br>
+    <a href="catalog.html">Back to Catalogue</a>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+
+
+        let cartItemsContainer = document.getElementById('cartItems');
+
+    
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = "<tr><td colspan='2'>आपका कार्ट खाली है!</td></tr>";
+        } else {
+            cart.forEach(function (item) {
+                let row = `<tr>
+                <td>${item.title}</td>
+                <td>Rs ${item.price}</td>
+            </tr>`;
+                cartItemsContainer.innerHTML += row;
+            });
+        }
+    </script>
+    
+</body>
+</html>

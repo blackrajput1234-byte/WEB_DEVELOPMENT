@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Catalog</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            width: 70%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .books {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .book {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+        }
+
+        .book img {
+            width: 140px;
+            height: 190px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .book h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .author {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>📚 Books Catalog</h1>
+        <p>Explore our collection of amazing books</p>
+    </header>
+
+    <div class="container">
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search books by title..." onkeyup="searchBooks()">
+        </div>
+
+        <div class="books" id="bookList">
+
+            <div class="book">
+                <img src="https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg" alt="The Great Gatsby">
+                <h2>The Great Gatsby</h2>
+                <p class="author">F. Scott Fitzgerald</p>
+                <p class="price">₹299</p>
+                <button onclick="addToCart('The Great Gatsby')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="book">
+                <img src="https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg" alt="Pride and Prejudice">
+                <h2>Pride and Prejudice</h2>
+                <p class="author">Jane Austen</p>
+                <p class="price">₹349</p>
+                <button onclick="addToCart('Pride and Prejudice')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="book">
+                <img src="https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg" alt="1984">
+                <h2>1984</h2>
+                <p class="author">George Orwell</p>
+                <p class="price">₹399</p>
+                <button onclick="addToCart('1984')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="book">
+                <img src="https://covers.openlibrary.org/b/isbn/9780061120084-L.jpg" alt="To Kill a Mockingbird">
+                <h2>To Kill a Mockingbird</h2>
+                <p class="author">Harper Lee</p>
+                <p class="price">₹450</p>
+                <button onclick="addToCart('To Kill a Mockingbird')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="book">
+                <img src="https://covers.openlibrary.org/b/isbn/9780131103627-L.jpg" alt="The C Programming Language">
+                <h2>The C Programming Language</h2>
+                <p class="author">Brian Kernighan</p>
+                <p class="price">₹599</p>
+                <button onclick="addToCart('The C Programming Language')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="book">
+                <img src="https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg" alt="Clean Code">
+                <h2>Clean Code</h2>
+                <p class="author">Robert C. Martin</p>
+                <p class="price">₹699</p>
+                <button onclick="addToCart('Clean Code')">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Books Catalog | All Rights Reserved</p>
+    </footer>
+
+    <script>
+
+        function searchBooks() {
+            let input = document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            let books = document.getElementsByClassName("book");
+
+            for (let i = 0; i < books.length; i++) {
+
+                let title = books[i]
+                    .getElementsByTagName("h2")[0]
+                    .innerText
+                    .toLowerCase();
+
+                if (title.includes(input)) {
+                    books[i].style.display = "block";
+                } else {
+                    books[i].style.display = "none";
+                }
+            }
+        }
+
+        function addToCart(bookName) {
+            alert(bookName + " has been added to your cart!");
+        }
+
+    </script>
+
+</body>
+
+</html>

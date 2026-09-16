@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Catalogue</title>
+</head>
+
+<body>
+    <h1>Book Catalogue</h1>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <td><img src="images/book1.jpg" alt="Book 1"></td>
+            <td>The Friday Night</td>
+            <td>Daroga Prashant</td>
+            <td>Rs2000</td>
+            <td><button onclick="addToCart('The Friday Night', 2000)">Add to Cart</button></td>
+        </tr>
+        
+        <tr>
+            <td><img src="images/book2.jpg" alt="Book 2"></td>
+            <td>How to Laugh</td>
+            <td>Prabudh Jha</td>
+            <td>Rs2500</td>
+            <td><button onclick="addToCart('How to Laugh', 2500)">Add to Cart</button></td>
+        </tr>
+        
+
+        <tr>
+            <td><img src="images/book3.jpg" alt="Book 3"></td>
+            <td>Ther Ultimate Yadav Guide</td>
+            <td>Sir Pranjwal</td>
+            <td>Rs15000</td>
+            <td><button onclick="addToCart('Ther Ultimate Yadav Guide', 15000)">Add to Cart</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function addToCart(bookTitle) {
+            alert(bookTitle + " has been added to your cart!");
+        }
+    </script>
+    <a href="cart.html"> GO TO CART  </a>
+</body>
+<script>
+    function addToCart(bookTitle, bookPrice) {
+
+        let item = {
+            title: bookTitle,
+            price: bookPrice
+        };
+
+
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+
+        cart.push(item);
+
+        localStorage.setItem('myCart', JSON.stringify(cart));
+        window.location.href = "cart.html";
+    }
+</script>
+
+</html>
